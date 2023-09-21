@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DSAN-5000: Introduction",
-    "section": "",
-    "text": "See the following link for more information about the author: about me\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nHIGHLY RECOMMENDED\n\nIt is highly recommended that you build your website using .ipynb files and NOT .qmdfiles\nFunctionally the two formats are basically identical, i.e. they are just Markdown + Code\nHowever there is ONE MAJOR DIFFERENCE, i.e. .ipynb stores the code outputs in the meta-data of the file\n\nThis means you ONLY HAVE TO RUN THE CODE ONCE with .ipynb\n.qmd will run the code every time you build the website, which can be very slow\n\nThere are caching options for .qmd, however, they are “messier” that just using .ipynb\n\nNote: .qmd is fine if there is no code, in which case it is basically just a Markdown file\n\nConverting between the two\n\nYou can switch between the two formats using\nquarto convert clustering.qmd this will output a .ipynb version called clustering.ipynb\nquarto convert eda.ipynb this will output a .qmd version called eda.qmd\n\nYOU CAN RUN R CODE IN VSC WITH .ipynb, see the following link\n\nhttps://saturncloud.io/blog/how-to-use-jupyter-r-kernel-with-visual-studio-code/\n\nIt is possible, but NOT RECOMMENDED, to mix Python and R code in the same file\n\nIMPORTANT ASIDE\n\nA .ipynb file is simply a JSON file with a specialized structural format\nYou can see this by running more eda/eda.ipynb from the command line\nWhich will output the following;\n\n\nTIP FOR MAC USERS\n\ncommand+control+shift+4 is very useful on a mac.\n\nIt takes a screenshot and saves it to the clip-board\n\nThe following VSC extension allows you to paste images from the clip-board with alt+command+v.\n\ntab is your best friend when using the command line, since it does auto-completion\nopen ./path_to_file will open any file or directory from the command line"
-  },
-  {
     "objectID": "eda/eda.html",
     "href": "eda/eda.html",
     "title": "Data Exploration",
@@ -33,5 +26,82 @@
     "title": "Clustering",
     "section": "",
     "text": "Build out your website tab for “clustering”"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "DSAN-5000: Introduction",
+    "section": "",
+    "text": "See the following link for more information about the author: about me\nThis is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\nHIGHLY RECOMMENDED\n\nIt is highly recommended that you build your website using .ipynb files and NOT .qmdfiles\nFunctionally the two formats are basically identical, i.e. they are just Markdown + Code\nHowever there is ONE MAJOR DIFFERENCE, i.e. .ipynb stores the code outputs in the meta-data of the file\n\nThis means you ONLY HAVE TO RUN THE CODE ONCE with .ipynb\n.qmd will run the code every time you build the website, which can be very slow\n\nThere are caching options for .qmd, however, they are “messier” that just using .ipynb\n\nNote: .qmd is fine if there is no code, in which case it is basically just a Markdown file\n\nConverting between the two\n\nYou can switch between the two formats using\nquarto convert clustering.qmd this will output a .ipynb version called clustering.ipynb\nquarto convert eda.ipynb this will output a .qmd version called eda.qmd\n\nYOU CAN RUN R CODE IN VSC WITH .ipynb, see the following link\n\nhttps://saturncloud.io/blog/how-to-use-jupyter-r-kernel-with-visual-studio-code/\n\nIt is possible, but NOT RECOMMENDED, to mix Python and R code in the same file\n\nIMPORTANT ASIDE\n\nA .ipynb file is simply a JSON file with a specialized structural format\nYou can see this by running more eda/eda.ipynb from the command line\nWhich will output the following;\n\n\nTIP FOR MAC USERS\n\ncommand+control+shift+4 is very useful on a mac.\n\nIt takes a screenshot and saves it to the clip-board\n\nThe following VSC extension allows you to paste images from the clip-board with alt+command+v.\n\ntab is your best friend when using the command line, since it does auto-completion\nopen ./path_to_file will open any file or directory from the command line"
+  },
+  {
+    "objectID": "decision_trees/classification/classification.html",
+    "href": "decision_trees/classification/classification.html",
+    "title": "Classification",
+    "section": "",
+    "text": "Build out your website tab for “Classification”"
+  },
+  {
+    "objectID": "decision_trees/regression/regression.html",
+    "href": "decision_trees/regression/regression.html",
+    "title": "Regression",
+    "section": "",
+    "text": "Build out your website tab for “Regression”"
+  },
+  {
+    "objectID": "introduction/introduction.html",
+    "href": "introduction/introduction.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Public Transportation Trends Since COVID-19"
+  },
+  {
+    "objectID": "conclusions/conclusions.html",
+    "href": "conclusions/conclusions.html",
+    "title": "Conclusions",
+    "section": "",
+    "text": "Build out your website tab for “conclusions”"
+  },
+  {
+    "objectID": "code/code.html",
+    "href": "code/code.html",
+    "title": "Code",
+    "section": "",
+    "text": "Build out your website tab for “code”"
+  },
+  {
+    "objectID": "dimensionality_reduction/dimensionality_reduction.html",
+    "href": "dimensionality_reduction/dimensionality_reduction.html",
+    "title": "Dimensionality Reduction",
+    "section": "",
+    "text": "Build out your website tab for “Dimensionality Reduction”"
+  },
+  {
+    "objectID": "arm/arm.html",
+    "href": "arm/arm.html",
+    "title": "ARM",
+    "section": "",
+    "text": "Build out your website tab for “ARM”"
+  },
+  {
+    "objectID": "cleaning/cleaning.html",
+    "href": "cleaning/cleaning.html",
+    "title": "Data Cleaning",
+    "section": "",
+    "text": "Build out your website tab for “data cleaning”"
+  },
+  {
+    "objectID": "data/data.html",
+    "href": "data/data.html",
+    "title": "Data",
+    "section": "",
+    "text": "Link to GitHub repository: https://github.com/anly501/dsan-5000-project-jsweren1/tree/main"
+  },
+  {
+    "objectID": "gathering/gathering.html",
+    "href": "gathering/gathering.html",
+    "title": "Data Gathering",
+    "section": "",
+    "text": "Build out your website tab for “Data Gathering”"
   }
 ]

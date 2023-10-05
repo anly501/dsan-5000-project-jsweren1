@@ -1,8 +1,7 @@
 
 body {
     font-family:verdana;
-    background-image: ;
-    background-color: ;
+    background-color: white;
 
 }
 
@@ -11,7 +10,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #004d99;
+    background-color: white;
     max-width:1357px;
 }
 
@@ -21,7 +20,7 @@ li {
 
 li a, .dropbtn {
     display: inline-block;
-    color: white;
+    color: #68A2B9;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -38,7 +37,7 @@ li.dropdown {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: white;
+    background-color: #355464;
     min-width: 160px;   
 }
 
@@ -63,7 +62,7 @@ td {
 }
 
 tr{
-    padding: 0px;
+    padding: 10px;
     text-align: top;
     background-color:#ffffff
 }

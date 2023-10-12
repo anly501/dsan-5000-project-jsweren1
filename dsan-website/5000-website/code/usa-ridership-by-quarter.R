@@ -11,3 +11,6 @@ ggplot(data=ridership, aes(x=factor(`Year - Quarter`), y=Total.Ridership..000s.,
   geom_point()+
   labs(x = "Year - Quarter", y = "Total Ridership (000s)", title = "Total Public Transit Ridership in the U.S.")+
   theme(axis.text.x = element_text(angle = 45))
+colnames(ridership)[4:11] <- c("total_ridership", "heavy_rail", "light_rail", "commuter_rail", "trolleybus", "bus", "demand_response", "other")
+ridership <- ridership[c(2, 4:11)]
+write.csv(ridership, "../data/cleaned_data/ridership_by_quarter_cleaned.csv")

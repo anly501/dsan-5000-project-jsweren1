@@ -1,6 +1,6 @@
 {
     "status": "ok",
-    "totalResults": 22,
+    "totalResults": 21,
     "articles": [
         {
             "source": {
@@ -92,19 +92,6 @@
             "urlToImage": "https://s0.wp.com/i/blank.jpg",
             "publishedAt": "2023-10-03T12:01:32Z",
             "content": "NEW RESOURCES \r\nMission Local: Hidden history of BART revealed in newly digitized newsletters. \u201cDid you know that BART employees used to get big bonuses for coming up with ideas that saved the transi\u2026 [+6035 chars]"
-        },
-        {
-            "source": {
-                "id": null,
-                "name": "Biztoc.com"
-            },
-            "author": "oaklandside.org",
-            "title": "Most BART train lines will run more often starting next week",
-            "description": "Regular Bay Area Rapid Transit riders are going to notice significant changes to train schedules starting next week. While the details are complicated, the most important thing to know is that most trains will run more frequently, and people can expect a more\u2026",
-            "url": "https://biztoc.com/x/e08c36b42867a2db",
-            "urlToImage": "https://c.biztoc.com/p/e08c36b42867a2db/og.webp",
-            "publishedAt": "2023-09-10T07:52:08Z",
-            "content": "Regular Bay Area Rapid Transit riders are going to notice significant changes to train schedules starting next week.While the details are complicated, the most important thing to know is that most tr\u2026 [+314 chars]"
         },
         {
             "source": {

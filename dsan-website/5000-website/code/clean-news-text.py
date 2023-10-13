@@ -9,7 +9,6 @@ total_requests=2
 verbose=True
 
 #WMATA
-API_KEY='581fd71df234408291300dc13f0ee6e8'
 
 x = open('../data/WMATA-newapi-raw-data.json')
 response = json.load(x)
@@ -17,10 +16,10 @@ response = json.load(x)
 def string_cleaner(input_string):
     try: 
         out=re.sub(r"""
-                    [,.;@#?!&$-]+  # Accept one or more copies of punctuation
-                    \ *           # plus zero or more copies of a space,
+                    [,.;@#?!&$-]+
+                    \ * 
                     """,
-                    " ",          # and replace it with a single space
+                    " ",
                     input_string, flags=re.VERBOSE)
 
         out = re.sub('[’.]+', '', input_string)

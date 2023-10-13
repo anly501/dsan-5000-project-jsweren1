@@ -11,4 +11,4 @@ wmata$date <- as.Date(wmata$date, "%d %B %Y")
 wmata <- wmata[c(4, 3)]
 colnames(wmata)[2] <- "avg_daily_entries"
 head(wmata)
-write.csv(wmata, "../data/cleaned_data/ridership_earnings.csv")
+write.csv(wmata, "../data/cleaned_data/wmata_monthly_ridership.csv")

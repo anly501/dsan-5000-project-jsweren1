@@ -51,4 +51,4 @@ commute$transportation_type <- replace(commute$transportation_type, commute$tran
 commute$transportation_type <- replace(commute$transportation_type, commute$transportation_type=='80', 'Work_from_home')
 commute <- commute %>% drop_na(transportation_type)
 
-head(commute, 50)
+write.csv(commute, "../data/cleaned_data/commute_by_demographic.csv")

@@ -10,5 +10,6 @@ wmata$date <- paste(1, wmata$X1, substr(wmata$wmata_years, 2, 5))
 wmata$date <- as.Date(wmata$date, "%d %B %Y")
 wmata <- wmata[c(4, 3)]
 colnames(wmata)[2] <- "avg_daily_entries"
+wmata$avg_daily_entries <- as.integer(str_replace(wmata$avg_daily_entries, ",", ""))
 head(wmata)
 write.csv(wmata, "../data/cleaned_data/wmata_monthly_ridership.csv")

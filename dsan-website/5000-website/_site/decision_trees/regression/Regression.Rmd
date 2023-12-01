@@ -1,0 +1,171 @@
+---
+title: "Regression"
+author: "Josh Sweren"
+date: "2023-11-30"
+output: html_document
+---
+
+```{r}
+apta <- read.csv("../../data/cleaned_data/apta_cities_cleaned.csv")
+head(apta)
+```
+
+```{r}
+boxplot(apta$Cost_per_trip, 
+        main = "Boxplot of Cost per Trip (USD)", 
+        ylab = "Cost per Trip (USD)")
+```
+
+
+```{r}
+library(tree)
+library(rpart)
+library(rattle)
+library(visNetwork)
+set.seed(1)
+train = sample(1:nrow(apta), nrow(apta)/2)
+apta.tree=tree(Trips_per_capita ~ Population + Area + Fare_per_trip + Miles_per_trip, apta, subset=train)
+summary(apta.tree)
+apta.tree2=rpart(Trips_per_capita ~ Population + Area + Fare_per_trip + Miles_per_trip, apta ,subset=train)
+fancyRpartPlot(apta.tree2)
+```
+
+```{r}
+cv.apta=cv.tree(apta.tree)
+plot(cv.apta$size,cv.apta$dev,type='b')
+prune.apta=prune.tree(apta.tree,best=5)
+plot(prune.apta)
+text(prune.apta,pretty=0)
+yhat=predict(apta.tree,newdata=apta[-train,])
+apta.test=apta[-train,"Trips_per_capita"]
+plot(yhat,apta.test)
+abline(0,1)
+mean((yhat-apta.test)^2)
+```
+
+
+```{r}
+train2 = sample(1:nrow(apta), nrow(apta)/2)
+apta.tree3=tree(Cost_per_trip ~ Population + Area + Fare_per_trip + Miles_per_trip, apta, subset=train2)
+summary(apta.tree3)
+apta.tree4=rpart(Cost_per_trip ~ Population + Area + Fare_per_trip + Miles_per_trip, apta ,subset=train2)
+fancyRpartPlot(apta.tree4)
+```
+
+```{r}
+cv.apta2=cv.tree(apta.tree3)
+plot(cv.apta2$size,cv.apta2$dev,type='b')
+prune.apta2=prune.tree(apta.tree3,best=5)
+plot(prune.apta2)
+text(prune.apta2,pretty=0)
+yhat2=predict(apta.tree3,newdata=apta[-train,])
+apta.test2=apta[-train,"Cost_per_trip"]
+plot(yhat2,apta.test2)
+abline(0,1)
+mean((yhat2-apta.test2)^2)
+```
+
+```{r}
+ipums <- read.csv("../../data/cleaned_data/ipums_cleaned.csv")
+head(ipums)
+```
+
+```{r}
+library(rpart)
+library(rattle)
+table(ipums$commute_method)
+```
+
+```{r}
+barplot(table(ipums$commute_method), main="Distribution of Commute Methods",
+   xlab="Commute Method", ylab="Number of Responses", 
+        cex.axis=.8, cex.names=.8)
+```
+
+
+```{r}
+train_size <- floor(nrow(ipums)*(.8))
+test_size <- nrow(ipums) - train_size
+
+set.seed(1000)
+train <- ipums[sample(nrow(ipums), train_size,replace=FALSE),]
+test <- ipums[-sample(nrow(ipums), train_size,replace=FALSE),]
+
+ipums_tree <- rpart::rpart(commute_method ~ city_population_00s + age + income, data = train, method="class")
+fancyRpartPlot(ipums_tree,main = "Decision Tree 1")
+
+prediction = predict(ipums_tree, test[,-which(names(test) %in% c("commute_method"))], type="class")
+table(prediction, test$commute_method)
+```
+
+```{r}
+ipums2 <- ipums[-sample(which(ipums$commute_method=="Private Vehicle"), 44000),]
+ipums2 <- ipums2[-sample(which(ipums2$commute_method=="Worked From Home"), 17000),]
+table(ipums2$commute_method)
+```
+
+```{r}
+barplot(table(ipums2$commute_method), main="Distribution of Commute Methods",
+   xlab="Commute Method", ylab="Number of Responses", 
+        cex.axis=.8, cex.names=.8)
+```
+
+
+```{r}
+train_size2 <- floor(nrow(ipums2)*(.8))
+test_size2 <- nrow(ipums2) - train_size2
+
+set.seed(1000)
+train2 <- ipums2[sample(nrow(ipums2), train_size2,replace=FALSE),]
+test2 <- ipums2[-sample(nrow(ipums2), train_size2,replace=FALSE),]
+
+
+ipums_tree2 <- rpart(commute_method ~ city_population_00s + age + income, data = train2, method="class")
+fancyRpartPlot(ipums_tree2,main = "Commute Method Decision Tree")
+
+prediction2 = predict(ipums_tree2, test2[,-which(names(test) %in% c("commute_method"))], type="class")
+table(prediction2, test2$commute_method)
+```
+
+```{r}
+library(caret)
+confusionMatrix(prediction2,as.factor(test2$commute_method))
+```
+
+```{r}
+library(cvms)
+conf_mat <- confusion_matrix(targets = test2$commute_method,
+                             predictions = prediction2)
+plot_confusion_matrix(conf_mat$`Confusion Matrix`[[1]], rotate_y_text = FALSE)
+```
+
+
+```{r}
+library(randomForest)
+set.seed(1)
+bag.apta2=randomForest(Cost_per_trip ~ Population + Area + Fare_per_trip + Miles_per_trip, data=apta,subset=train2, mtry=4, importance=TRUE)
+bag.apta2
+yhat.bag2 = predict(bag.apta2,newdata=apta[-train2,])
+plot(yhat.bag2, apta.test2)
+abline(0,1)
+mean((yhat.bag2-apta.test2)^2)
+```
+
+```{r}
+bag.apta=randomForest(Cost_per_trip ~ Population + Area + Fare_per_trip + Miles_per_trip,data=apta,subset=train2, mtry=4, ntree=25)
+yhat.bag = predict(bag.apta,newdata=apta[-train2,])
+rf.apta=randomForest(Cost_per_trip ~ Population + Area + Fare_per_trip + Miles_per_trip, data=apta,subset=train2,mtry=2,importance=TRUE)
+yhat.rf = predict(rf.apta,newdata=apta[-train2,])
+mean((yhat.rf-apta.test2)^2)
+importance(rf.apta)
+varImpPlot(rf.apta)
+```
+
+```{r}
+rf.apta=randomForest(Cost_per_trip ~ Population + Area + Fare_per_trip + Miles_per_trip, data=apta,subset=train2,mtry=2,importance=TRUE)
+yhat.rf = predict(rf.apta,newdata=apta[-train2,])
+mean((yhat.rf-apta.test2)^2)
+importance(rf.apta)
+varImpPlot(rf.apta)
+```
+

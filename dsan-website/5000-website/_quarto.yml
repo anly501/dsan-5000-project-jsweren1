@@ -6,11 +6,12 @@ website:
     background: "#355464"
     foreground: "#99D9D9"
     search: true
-    title: "DSAN-5000: Project"
+    title: "DSAN-5000 Project - Public Transit Analysis"
     subtitle: "text"
     contents:
       - text: "Name: Josh Sweren"
       - text: "GU Net ID: jms819"
+      - text: "----------"
       - href: index.ipynb
         text: About Me
       - href: code/code.ipynb
@@ -37,13 +38,17 @@ website:
           text: Regression
         - href: decision_trees/classification/classification.ipynb
           text: Classification
-      - href: arm/arm.ipynb
-        text: ARM
       - href: conclusions/conclusions.ipynb
         text: Conclusions
+      - text: "---------"
+      - text: "---------"
+      - href: https://www.linkedin.com/in/joshua-sweren-26599a15b/
+        text: LinkedIn
 format:
   html:
-    theme: lumen
+    theme: 
+      - united
+      - styles.scss
     toc: true
 
 

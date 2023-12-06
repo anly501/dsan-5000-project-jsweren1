@@ -11,6 +11,9 @@ website:
     contents:
       - text: "Name: Josh Sweren"
       - text: "GU Net ID: jms819"
+      - text: "---------"
+      - href: https://www.linkedin.com/in/joshua-sweren-26599a15b/
+        text: LinkedIn
       - text: "----------"
       - href: index.ipynb
         text: About Me
@@ -40,10 +43,6 @@ website:
           text: Classification
       - href: conclusions/conclusions.ipynb
         text: Conclusions
-      - text: "---------"
-      - text: "---------"
-      - href: https://www.linkedin.com/in/joshua-sweren-26599a15b/
-        text: LinkedIn
 format:
   html:
     theme: 
